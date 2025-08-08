@@ -243,7 +243,19 @@ struct library_system
             cout << "There are no users to be printed\n";
         for (int i{0}; i < addU; i++)
         {
-            cout << "ID: " << users[i].id << ", Name: " << users[i].name << endl;
+            int flag{1};
+            cout << "ID: " << users[i].id << ", Name: " << users[i].name << " | Borrowed:";
+            for (int j{0}; j < addBR; j++)
+            {
+                if (users[i].name == borrowers[j].user_name && borrowers[j].status == 1)
+                {
+                    cout << " " << borrowers[j].book_name;
+                    flag = 0;
+                }
+            }
+            if (flag)
+                cout << " Nothing";
+            cout << endl;
         }
         cout << "\n****************************************\n";
     }
