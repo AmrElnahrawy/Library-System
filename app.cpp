@@ -7,6 +7,7 @@ struct library_books
     int id;
     string name;
     int quantity;
+    int borrowed = 0;
 };
 
 struct library_users
@@ -194,7 +195,7 @@ struct library_system
         sort(books, books + addB, id_sort);
         for (int i{0}; i < addB; i++)
         {
-            cout << "ID: " << books[i].id << ", Name: " << books[i].name << ", quantity: " << books[i].quantity << endl;
+            cout << "ID: " << books[i].id << " Name: " << books[i].name << " Quantity: " << books[i].quantity << " borrowed: " << books[i].borrowed << endl;
         }
         cout << "\n****************************************\n";
     }
@@ -212,7 +213,7 @@ struct library_system
         sort(books, books + addB, name_sort);
         for (int i{0}; i < addB; i++)
         {
-            cout << "ID: " << books[i].id << ", Name: " << books[i].name << ", quantity: " << books[i].quantity << endl;
+            cout << "ID: " << books[i].id << " Name: " << books[i].name << " Quantity: " << books[i].quantity << " borrowed: " << books[i].borrowed << endl;
         }
         cout << "\n****************************************\n";
     }
@@ -295,6 +296,7 @@ struct library_system
         borrowers[addBR].user_name = user_name;
         borrowers[addBR].book_name = book_name;
         books[book_index].quantity--;
+        books[book_index].borrowed++;
         borrowers[addBR].status = 1;
         addBR++;
         cout << "\n****************************************\n";
@@ -330,6 +332,7 @@ struct library_system
             }
         }
         books[book_index].quantity++;
+        books[book_index].borrowed--;
         borrowers[borrow_index].status = 2;
         cout << "\n****************************************\n";
     }
